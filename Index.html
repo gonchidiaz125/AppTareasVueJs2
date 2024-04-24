@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bulma.min.css">
+    
+    <title>Mis Tareas</title>
+</head>
+<body>
+    <div id="app">
+        <section class="hero is-success">
+            <div class="hero-body">
+                <div class="container">
+                    <p class="title">Mis tareas</p>
+                    <p class="subtitle">Organizador de tareas diarias</p>
+                    <p class="subtitle is-7">Version VueJs 2.0</p>
+                </div>
+            </div>
+        </section>
+        <div class="columns is-mobile" style="padding: 2%;" >
+          <div class="column">
+            <section class="hero">
+              <div class="hero-body">
+                  <div class="container">
+                      <label class="label">Registra tu tarea</label>
+                      <div class="field">
+                        <label class="label">Tarea</label>
+                        <div class="control">
+                          <input class="input" type="text" 
+                                 placeholder="ingrese tarea"
+                                 v-model="tarea_txt">   
+                        </div>
+                      </div>
+                      <div>
+                        <p v-if="error_msg" style="color: red;">{{ error_msg }}</p>
+                      </div>
+                      <div class="field">
+                        <label class="label">Prioridad</label>
+                        <div class="control">
+                          <div class="select">
+                            <select v-model="prioridad">
+                              <option value="N">Normal</option>
+                              <option value="I">Importante</option>
+                              <option value="M">Muy importante</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="buttons">
+                        <button @click="AgregarTareas()" class="button is-success is-responsive is-small">Agregar</button>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          </div>
+          <div class="column">
+            <section class="hero">
+              <div class="hero-body">
+                  <div class="container">
+                    <label class="label">Lista de tareas</label>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input class="input" type="text" 
+                      v-model="search_text"
+                      placeholder="Filtrar tarea">
+                    </div>
+                  </div>
+                  <table class="table is-responsive">
+                    <thead>
+                        <th>Tarea</th>
+                        <th>Prioridad</th>
+                        <th>Acciones</th>
+                    </thead>
+                    <tbody>
+                      <tr v-for="i in lista_tareas">
+                        <td>{{ i.tarea }}</td>
+                        <td>
+                          <span v-if="i.prioridad === 'N'" class="tag is-info">Normal</span>
+                          <span v-else-if="i.prioridad === 'I'" class="tag is-warning">Importante</span>
+                          <span v-else class="tag is-danger">Muy importante</span>
+                        </td>
+                        <td>
+                          <button @click="EliminarTarea(i.id)" class="button is-danger is-dark is-small">Eliminar</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </section>
+          </div>
+        </div>
+    </div>    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript" src="tareas.js"></script>
+    
+</body>
+</html>
