@@ -13,6 +13,6 @@ un buscador para filtrar las tareas por nombre,  tambien contamos con un botón 
 - Simplemente podemos visualizar la aplicacion [aquí](https://apptareasvuejs2.netlify.app/).
 
 ## Instalación y ejecución local
-git clone https://github.com/gonchidiaz125/AppTareasVueJs2.git
-npm install
-npm run dev
+- git clone https://github.com/gonchidiaz125/AppTareasVueJs2.git
+- npm install
+- npm run dev
